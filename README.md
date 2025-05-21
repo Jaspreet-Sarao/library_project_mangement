@@ -17,36 +17,61 @@ A **database-driven web application** for managing library operations, including
 **Real-Time Book Availability** – Views filter available books instantly.
 
 **Duplicate Member Prevention** – Stored procedures validate new entries.
+
 **Checkout & Return Tracking** – Records borrow/return dates with status updates.
+
 **Reporting** – Lists overdue books and active checkouts.
 
 
 **Database Schema (ERD)
+
 Tables**
+
 1. members
-   member_id(PK)
+
+    member_id(PK)
+
    first_name(NN)
+
    last_name(NN)
+
    email(NN, Unique)
+
    phone (NN,Unique)
-2. books
+
+3. books
+
    book_id(PK)
+
    title(NN)
+
    author(NN)
+
    genre(NN)
+
    available(NN,Boolean)
-3. borrowing_records
+
+5. borrowing_records
+
    record_id(PK)
+
    book_id(FK-> books)
+
    member_id(FK-> members)
+
    borrow_date(NN)
+
    due_date(NN)
+
    returned (NN, Boolean)
+
    late_fee(Decimal)
 
 **Relationships**
+
 **One-to-Many:**
 
 A **member** can have multiple **borrowing_records.**
+
 A **book** can appear in multiple **borrowing_records.**
    
