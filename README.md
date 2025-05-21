@@ -1,15 +1,21 @@
 ## Library Management System
 
 **What It Is**
+
 A **database-driven web application** for managing library operations, including book inventory, member registrations, and borrowing records.
 
 **What It's For**
+
 **Librarians**: Track books, manage members, and automate overdue fees.
+
 **Patrons**: Check book availability and borrowing history.
 
 **Key Features**
+
 **Automated Late Fees** – Triggers calculate fees when books are overdue.
+
 **Real-Time Book Availability** – Views filter available books instantly.
+
 **Duplicate Member Prevention** – Stored procedures validate new entries.
 **Checkout & Return Tracking** – Records borrow/return dates with status updates.
 **Reporting** – Lists overdue books and active checkouts.
