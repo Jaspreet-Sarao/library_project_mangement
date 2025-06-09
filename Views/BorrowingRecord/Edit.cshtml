@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Library_Project_Management.Models.Borrowing_Record>
+
+<h1>Borrowing Records</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+    <a asp-action="Overdue" class="btn btn-warning">View Overdue Books</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Record ID</th>
+            <th>Book Title</th>
+            <th>Member</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Late Fee</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model)
+        {
+            <tr>
+                <td>@record.RecordId</td>
+                <td>@record.Book?.Title</td>
+                <td>@record.Member?.FullName</td>
+                <td>@record.BorrowDate.ToShortDateString()</td>
+                <td>@record.DueDate.ToShortDateString()</td>
+                <td>
+                    @if (record.Returned)
+                    {
+                        <span class="badge bg-success">Returned</span>
+                    }
+                    else if (record.DueDate < DateTime.Now)
+                    {
+                        <span class="badge bg-danger">Overdue</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-primary">Borrowed</span>
+                    }
+                </td>
+                <td>@record.LateFee.ToString("C")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@record.RecordId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Edit" asp-route-id="@record.RecordId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@record.RecordId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

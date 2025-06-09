@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Library_Project_Management.Models.Member>
+
+<h1>LIBRARY MEMBERS LIST</h1>
+
+<!-- Search Section -->
+<div class="search-section mb-4">
+    <input type="text" id="searchInput" placeholder="Search members..." class="form-control">
+</div>
+
+<!-- Members Table -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>FIRST NAME</th>
+            <th>LAST NAME</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var member in Model)
+        {
+            <tr>
+                <td>@member.MemberId</td>
+                <td>@member.FirstName</td>
+                <td>@member.LastName</td>
+                <td>@member.Email</td>
+                <td>@member.Phone</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@member.MemberId" class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@member.MemberId" class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<td>
+<a asp-action="Create" class="btn btn-success">Add New Member</a>
+
+
+    
+    
+</td>
+@section Scripts {
+    <script>
+        // Simple search functionality
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            const searchValue = this.value.toLowerCase();
+            document.querySelectorAll('tbody tr').forEach(row => {
+                const text = row.textContent.toLowerCase();
+                row.style.display = text.includes(searchValue) ? '' : 'none';
+            });
+        });
+    </script>
+}
+
