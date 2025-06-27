@@ -1,4 +1,4 @@
-using Library_Project_Management.Data;
+using LibraryManagementProject.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

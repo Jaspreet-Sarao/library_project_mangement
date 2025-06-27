@@ -1,8 +1,8 @@
-﻿using Library_Project_Management.Models;
+﻿using LibraryManagementProject.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Library_Project_Management.Data
+namespace LibraryManagementProject.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
@@ -13,6 +13,6 @@ namespace Library_Project_Management.Data
         public DbSet<Member> Members { get; set; }
         public DbSet<Book> Books { get; set; }
         public DbSet<Borrowing_Record> Borrowing_Records { get; set; }
-    
+
     }
 }

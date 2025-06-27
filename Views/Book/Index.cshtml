@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Library_Project_Management.Models.Book>
+﻿@model IEnumerable<LibraryManagementProject.Models.Book>  
 
 <h1>BOOK CATALOG</h1>
 
@@ -41,6 +41,8 @@
                    
                     <a asp-action="Edit" asp-route-id="@book.BookId" class="btn btn-primary btn-sm">Edit</a>
                     <a asp-action="Delete" asp-route-id="@book.BookId" class="btn btn-danger btn-sm">Delete</a>
+                    <a asp-action="ByGenre" asp-route-genre="@book.Genre">@book.Genre</a>
+
                 </td>
             </tr>
         }
@@ -48,5 +50,4 @@
 </table>
 
 <a asp-action="Create" class="btn btn-success">Add New Book</a>
-
 

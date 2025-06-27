@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Library_Project_Management.Models;
-using Library_Project_Management.Data;
+using LibraryManagementProject.Models;
+using LibraryManagementProject.Data;
 using Microsoft.EntityFrameworkCore;
-
-namespace Library_Project_Management.Controllers
+namespace LibraryManagementProject.Controllers
 {
     /// <summary>
     /// Controller for managing books in the library system
@@ -182,6 +181,22 @@ namespace Library_Project_Management.Controllers
                 }
             }
             return View(book);
+        }
+        // GET: Book/ByGenre/Fantasy
+        [HttpGet("ByGenre/{genre}")]
+        public async Task<IActionResult> ByGenre(string genre)
+        {
+            var books = await _context.Books
+                .Where(b => b.Genre.ToLower() == genre.ToLower())
+                .ToListAsync();
+
+            if (!books.Any())
+            {
+                return NotFound($"No books found in genre: {genre}");
+            }
+
+            ViewBag.Genre = genre;
+            return View(books);
         }
 
         // GET: Book/Delete/5

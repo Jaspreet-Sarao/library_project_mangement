@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Library_Project_Management.Models.Member>
+﻿@model IEnumerable<LibraryManagementProject.Models.Member>
 
 <h1>LIBRARY MEMBERS LIST</h1>
 
@@ -31,6 +31,7 @@
                 <td>
                     <a asp-action="Edit" asp-route-id="@member.MemberId" class="btn btn-primary">Edit</a>
                     <a asp-action="Delete" asp-route-id="@member.MemberId" class="btn btn-primary">Delete</a>
+                    <a asp-action="Borrowings" asp-route-id="@member.MemberId" class="btn btn-info">View Borrowings</a>
                 </td>
             </tr>
         }
@@ -57,4 +58,3 @@
         });
     </script>
 }
-

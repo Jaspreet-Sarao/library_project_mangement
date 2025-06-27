@@ -1,8 +1,8 @@
 using System.Diagnostics;
-using Library_Project_Management.Models;
+using LibraryManagementProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Library_Project_Management.Controllers
+namespace LibraryManagementProject.Controllers
 {
     public class HomeController : Controller
     {

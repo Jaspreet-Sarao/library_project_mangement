@@ -1,0 +1,29 @@
+﻿@model LibraryManagementProject.Models.Member
+
+<h1>Borrowing Records for @Model.FullName</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Borrow Date</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Late Fee</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var record in Model.Borrowing_Records)
+        {
+            <tr>
+                <td>@record.Book.Title</td>
+                <td>@record.BorrowDate.ToShortDateString()</td>
+                <td>@record.DueDate.ToShortDateString()</td>
+                <td>@(record.Returned ? "Returned" : "Borrowed")</td>
+                <td>@record.LateFee.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index">Back to Members List</a>

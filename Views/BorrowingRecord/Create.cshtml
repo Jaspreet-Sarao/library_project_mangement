@@ -1,14 +1,18 @@
-﻿@model Library_Project_Management.Models.Borrowing_Record
+﻿@model LibraryManagementProject.Models.Borrowing_Record
 
-<h1>Create Borrowing Record</h1>
+@{
+    ViewData["Title"] = "Create Borrowing Record";
+}
 
-<form asp-action="Create">
+<h1>@ViewData["Title"]</h1>
+
+<form asp-controller="BorrowingRecord" asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
     <div class="form-group">
         <label asp-for="BookId" class="control-label">Book</label>
-        <select asp-for="BookId" class="form-control"
-                asp-items="@(new SelectList(ViewBag.Books, "BookId", "Title"))">
+        <select asp-for="BookId" class="form-control" asp-items="@(new SelectList(ViewBag.Books, "BookId", "Title"))">
             <option value="">-- Select Book --</option>
         </select>
         <span asp-validation-for="BookId" class="text-danger"></span>
@@ -16,16 +20,15 @@
 
     <div class="form-group">
         <label asp-for="MemberId" class="control-label">Member</label>
-        <select asp-for="MemberId" class="form-control"
-                asp-items="@(new SelectList(ViewBag.Members, "MemberId", "Name"))">
+        <select asp-for="MemberId" class="form-control" asp-items="@(new SelectList(ViewBag.Members, "MemberId", "FullName"))">
             <option value="">-- Select Member --</option>
         </select>
         <span asp-validation-for="MemberId" class="text-danger"></span>
     </div>
 
     <div class="form-group">
-        <label asp-for="DueDate" class="control-label"></label>
-        <input asp-for="DueDate" class="form-control" />
+        <label asp-for="DueDate" class="control-label">Due Date</label>
+        <input asp-for="DueDate" class="form-control" type="date" />
         <span asp-validation-for="DueDate" class="text-danger"></span>
     </div>
 
@@ -36,16 +39,16 @@
 </form>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
     <script>
-        $(function() {
-            // Set default due date (15 days from today)
-            var today = new Date();
-            var dueDate = new Date();
-            dueDate.setDate(today.getDate() + 15);
-            $("#DueDate").val(dueDate.toISOString().split('T')[0]);
+        document.addEventListener('DOMContentLoaded', function () {
+            const dueDateInput = document.querySelector('[name="DueDate"]');
+            if (dueDateInput && !dueDateInput.value) {
+                const today = new Date();
+                const dueDate = new Date(today);
+                dueDate.setDate(today.getDate() + 15);
+                dueDateInput.value = dueDate.toISOString().split('T')[0];
+            }
         });
     </script>
 }

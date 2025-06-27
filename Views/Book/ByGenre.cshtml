@@ -1,0 +1,25 @@
+﻿@model IEnumerable<LibraryManagementProject.Models.Book>
+
+<h1>Books in Genre: @ViewBag.Genre</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@(book.Available ? "Available" : "Borrowed")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index">Back to All Books</a>

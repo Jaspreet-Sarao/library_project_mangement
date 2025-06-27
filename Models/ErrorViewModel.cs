@@ -1,4 +1,4 @@
-namespace Library_Project_Management.Models
+namespace LibraryManagementProject.Models
 {
     public class ErrorViewModel
     {
