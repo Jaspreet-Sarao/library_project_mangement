@@ -39,7 +39,7 @@ Tables**
 
    phone (NN,Unique)
 
-3. books
+2. books
 
    book_id(PK)
 
@@ -51,7 +51,7 @@ Tables**
 
    available(NN,Boolean)
 
-5. borrowing_records
+3. borrowing_records
 
    record_id(PK)
 
@@ -74,4 +74,36 @@ Tables**
 A **member** can have multiple **borrowing_records.**
 
 A **book** can appear in multiple **borrowing_records.**
+
+**Key Features Demonstrated in the Video:**
+
+ Create, Read, Update, and Delete (CRUD) functionality for books, members, and borrowing records
+
+ Automated late fee calculation when books are returned late
+
+ Real-time book availability status
+
+ Duplicate member prevention using stored procedures
+
+ Reports for overdue books and active checkouts
+
+ **Tech Stack:**
+
+ASP.NET Core MVC
+
+Entity Framework Core
+
+SQL Server
+
+C#
+
+HTML & Razor Views
+
+ **What I Learned:**
+One major challenge was getting the form submissions to work correctly using model binding and validation. I overcame this by carefully debugging my controller logic, adding proper view bindings, and using anti-forgery tokens.
+
+Standout Feature:
+The automated late fee calculation feature dynamically updates fees based on due dates and return status, reducing manual tracking for librarians.
+
+
    
